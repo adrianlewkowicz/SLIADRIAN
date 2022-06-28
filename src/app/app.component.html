@@ -1,0 +1,34 @@
+<div class="container">
+  <b>Formar pliku Excel, pobierz moją zawartość:</b><br>
+
+<button (click)="exportAsXLSX()">
+  <i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button>
+
+   <div class="form-group mb-4">
+    <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Szukaj">
+  </div>
+
+<table class="table" >
+	<tr>
+		<td><b>Nazwa</b></td>
+		<td><b>Data</b></td>
+		<td><b>Godzina</b></td>
+		<td><b>Użytkownik</b></td>
+		<td><b>Lokal</b></td>
+
+  </tr>
+  <tbody>
+	<tr *ngFor="let item of dataExportu | filter: searchText; let i = index ">
+		<td>{{item.TitleExport}}</td>
+		<td>{{item.DateExport}}</td>
+		<td>{{item.HourExport}}</td>
+    <td>{{item.UserName}}</td>
+    <td>{{item.Local}}</td>
+  </tr>
+  </tbody>
+</table>
+<ng-template #noResults>
+    <p>Nie znaleziono wyników "{{searchText}}".</p>
+  </ng-template>
+
+</div>
